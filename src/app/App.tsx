@@ -1,6 +1,6 @@
-import { Footer } from '../widgets/footer';
-import { Nav } from '../widgets/nav';
-import { HomePage } from '../views/home';
+import { Footer } from '~/widgets/footer';
+import { Nav } from '~/widgets/nav';
+import { HomePage } from '~/views/home';
 
 function App() {
   return (

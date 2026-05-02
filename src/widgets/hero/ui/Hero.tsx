@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useTypewriter } from '../../../shared/lib/hooks/useTypewriter';
+import { useTypewriter } from '~/shared/lib/hooks/useTypewriter';
 import './Hero.css';
 
 export function Hero() {

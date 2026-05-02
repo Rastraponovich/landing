@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '../../../shared/ui';
+import { SectionLayout } from '~/shared/ui';
 import './Contact.css';
 
 export function Contact() {

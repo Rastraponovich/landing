@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '../../../shared/ui';
+import { SectionLayout } from '~/shared/ui';
 import './Projects.css';
 
 interface Project {

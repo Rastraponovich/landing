@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '../../../shared/ui';
+import { SectionLayout } from '~/shared/ui';
 import './Stack.css';
 
 export function Stack() {
