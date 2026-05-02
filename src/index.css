@@ -1,5 +1,23 @@
 @import "tailwindcss";
-@import './shared/styles/variables.css';
+
+@theme {
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-text: #ffffff;
+  --color-text-secondary: #888888;
+  --color-accent: #e63946;
+  --color-accent-hover: #ff4d5a;
+  --color-border: #222222;
+
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+
+  /* Кастомные значения для transition и spacing (в Tailwind 4 префиксы важны для генерации утилит) */
+  --default-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --spacing-section-label-width: 120px;
+  --spacing-section-gap: 32px;
+  --spacing-stack-gap: 16px;
+}
 
 * {
   margin: 0;

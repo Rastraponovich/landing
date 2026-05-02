@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { SectionLayout } from '~/shared/ui';
-import './Projects.css';
+import { cn } from '~/shared/lib/utils';
 
 interface Project {
   num: string;
@@ -67,23 +67,50 @@ export function Projects() {
     <section
       id="projects"
       ref={sectionRef}
-      className={`projects ${isVisible ? 'projects--visible' : ''}`}
+      className={cn(
+        'px-6 py-8 md:px-12 md:py-12 md:pb-16 border-t border-border transition-all duration-600 ease-out',
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
+      )}
     >
       <SectionLayout num="/04" label="ПРОЕКТЫ">
-        <div className="projects__content">
-          <div className="projects__grid">
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-border">
             {projects.map((project) => (
-              <article className="project-card" key={project.num}>
-                <div className="project-card__top">
-                  <span className="project-card__num">{project.num}</span>
-                  <svg className="project-card__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" />
+              <article
+                className="group flex flex-col bg-bg p-6 min-h-auto md:min-h-[220px] relative overflow-hidden cursor-pointer transition-colors duration-300 hover:bg-bg-secondary"
+                key={project.num}
+              >
+                <div className="flex justify-between items-center mb-6">
+                  <span className="text-[10px] font-medium text-text-secondary tracking-[0.05em]">
+                    {project.num}
+                  </span>
+                  <svg
+                    className="text-text-secondary transition-all duration-300 group-hover:text-accent group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <path
+                      d="M4 12L12 4M12 4H6M12 4V10"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    />
                   </svg>
                 </div>
-                <h3 className="project-card__title">{project.title}</h3>
-                <p className="project-card__desc">{project.desc}</p>
-                <p className="project-card__tech">{project.tech}</p>
-                <a href={project.link} className="project-card__link">
+                <h3 className="font-display text-[32px] font-normal tracking-[0.02em] leading-[1.1] mb-2 -skew-x-[4deg] origin-left">
+                  {project.title}
+                </h3>
+                <p className="text-[11px] text-text-secondary mb-2 leading-[1.4]">
+                  {project.desc}
+                </p>
+                <p className="text-[9px] text-text-secondary tracking-[0.03em] uppercase mb-auto leading-[1.5]">
+                  {project.tech}
+                </p>
+                <a
+                  href={project.link}
+                  className="flex items-center gap-2 text-[10px] font-medium tracking-[0.08em] text-accent mt-6 transition-all duration-300 group-hover:gap-3"
+                >
                   <span>СМОТРЕТЬ ПРОЕКТ</span>
                 </a>
               </article>
