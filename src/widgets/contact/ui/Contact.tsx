@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { SectionLayout } from '../../../shared/ui';
 import './Contact.css';
 
 export function Contact() {
@@ -30,25 +31,35 @@ export function Contact() {
   ];
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       ref={sectionRef}
       className={`contact ${isVisible ? 'contact--visible' : ''}`}
     >
-      <div className="contact__layout">
-        <div className="section-labels">
-          <span className="section-num">/05</span>
-          <span className="section-name">КОНТАКТЫ</span>
-        </div>
+      <SectionLayout num="/05" label="КОНТАКТЫ">
         <div className="contact__content">
           <div className="contact__left">
             <h2 className="contact__title">
-              <span className="contact__title-row">ДАВАЙТЕ</span>
-              <span className="contact__title-row">СОЗДАВАТЬ <span className="contact__title-accent">КРУТОЕ</span></span>
+              <span className="contact__title-row">ДАВАЙТЕ СОЗДАВАТЬ</span>
+              <span className="contact__title-row contact__title-row--accent">КРУТОЕ</span>
             </h2>
-            <div className="contact__red-line">
-              <svg className="contact__red-line-arrow" width="8" height="8" viewBox="0 0 8 8" fill="currentColor">
-                <polygon points="0,0 8,4 0,8" />
+            <div className="contact__red-line" aria-hidden>
+              <span className="contact__red-line-track" />
+              <svg
+                className="contact__red-line-arrow"
+                width="28"
+                height="12"
+                viewBox="0 0 28 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 6h20M20 6l-4-4M20 6l-4 4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
           </div>
@@ -57,14 +68,19 @@ export function Contact() {
             <a href="mailto:hello@aleksey.dev" className="contact__cta">
               <span>НАПИСАТЬ МНЕ</span>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" strokeWidth="2"/>
+                <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" strokeWidth="2" />
               </svg>
             </a>
             <div className="contact__links">
               {links.map((link) => (
                 <div className="contact__link" key={link.label}>
                   <span className="contact__link-label">{link.label}</span>
-                  <a href={link.href} className="contact__link-value" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={link.href}
+                    className="contact__link-value"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {link.value}
                   </a>
                 </div>
@@ -72,7 +88,7 @@ export function Contact() {
             </div>
           </div>
         </div>
-      </div>
+      </SectionLayout>
     </section>
   );
 }

@@ -17,15 +17,10 @@
 webpage/
 ├── public/             # Статические файлы
 ├── src/
-│   ├── components/     # React компоненты
-│   │   ├── Nav.tsx
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Stack.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Contact.tsx
-│   │   └── Footer.tsx
-│   ├── App.tsx         # Главный компонент
+│   ├── app/            # Сборка приложения (App)
+│   ├── views/          # Страницы (home → HomePage)
+│   ├── widgets/        # Самостоятельные блоки (nav, hero, about, …)
+│   ├── shared/         # UI-kit, стили, утилиты (SectionLayout, variables)
 │   ├── main.tsx        # Точка входа
 │   └── index.css       # Глобальные стили
 ├── index.html
@@ -157,7 +152,7 @@ npm run deploy
 
 ### Изменить имя и контакты
 
-Открой `src/components/` и отредактируй:
+Открой `src/widgets/` и отредактируй нужный блок, или `src/views/home/` для страницы:
 
 - **Hero.tsx** — имя (`АЛЕКСЕЙ К.`), заголовок
 - **Contact.tsx** — email, telegram, github

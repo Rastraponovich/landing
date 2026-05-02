@@ -11,12 +11,6 @@
   transform: translateY(0);
 }
 
-.projects__layout {
-  display: grid;
-  grid-template-columns: var(--section-label-width) 1fr;
-  gap: var(--section-gap);
-}
-
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -108,11 +102,6 @@
 }
 
 @media (max-width: 1024px) {
-  .projects__layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
   .projects__grid {
     grid-template-columns: repeat(2, 1fr);
   }

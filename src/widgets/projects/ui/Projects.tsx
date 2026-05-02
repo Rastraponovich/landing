@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { SectionLayout } from '../../../shared/ui';
 import './Projects.css';
 
 interface Project {
@@ -63,16 +64,12 @@ export function Projects() {
   ];
 
   return (
-    <section 
-      id="projects" 
+    <section
+      id="projects"
       ref={sectionRef}
       className={`projects ${isVisible ? 'projects--visible' : ''}`}
     >
-      <div className="projects__layout">
-        <div className="section-labels">
-          <span className="section-num">/04</span>
-          <span className="section-name">ПРОЕКТЫ</span>
-        </div>
+      <SectionLayout num="/04" label="ПРОЕКТЫ">
         <div className="projects__content">
           <div className="projects__grid">
             {projects.map((project) => (
@@ -80,7 +77,7 @@ export function Projects() {
                 <div className="project-card__top">
                   <span className="project-card__num">{project.num}</span>
                   <svg className="project-card__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" />
                   </svg>
                 </div>
                 <h3 className="project-card__title">{project.title}</h3>
@@ -93,7 +90,7 @@ export function Projects() {
             ))}
           </div>
         </div>
-      </div>
+      </SectionLayout>
     </section>
   );
 }

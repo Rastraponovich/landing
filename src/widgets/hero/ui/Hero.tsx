@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useTypewriter } from '../hooks/useTypewriter';
+import { useTypewriter } from '../../../shared/lib/hooks/useTypewriter';
 import './Hero.css';
 
 export function Hero() {
@@ -7,7 +7,7 @@ export function Hero() {
   const codeRef = useRef<HTMLDivElement>(null);
   const [showCode, setShowCode] = useState(false);
   const [showLine, setShowLine] = useState(false);
-  
+
   const { displayText: line1, isComplete: line1Complete } = useTypewriter('СОЗДАЮ', 80, 300);
   const { displayText: line2, isComplete: line2Complete } = useTypewriter('ЦИФРОВЫЕ', 80, line1Complete ? 200 : 1000);
   const { displayText: line3, isComplete: line3Complete } = useTypewriter('ВПЕЧАТЛЕНИЯ', 80, line2Complete ? 200 : 2000);
@@ -26,11 +26,11 @@ export function Hero() {
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
-      
+
       if (titleRef.current && scrolled < window.innerHeight) {
         titleRef.current.style.transform = `translateY(${scrolled * 0.3}px)`;
       }
-      
+
       if (codeRef.current && scrolled < window.innerHeight) {
         codeRef.current.style.transform = `translateY(${scrolled * 0.15}px)`;
       }
@@ -82,8 +82,8 @@ function createExperience() {
           </a>
         </div>
       </div>
-      <div 
-        className={`hero__code ${showCode ? 'hero__code--visible' : ''}`} 
+      <div
+        className={`hero__code ${showCode ? 'hero__code--visible' : ''}`}
         ref={codeRef}
       >
         <pre className="hero__code-block">

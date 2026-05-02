@@ -1,45 +1,4 @@
-/* === BASE === */
-:root {
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #111111;
-  --color-text: #ffffff;
-  --color-text-secondary: #888888;
-  --color-accent: #e63946;
-  --color-accent-hover: #ff4d5a;
-  --color-border: #222222;
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Bebas Neue', sans-serif;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --section-label-width: 120px;
-  --section-gap: 32px;
-}
-
-/* === REUSABLE SECTION COMPONENTS === */
-.section-layout {
-  display: grid;
-  grid-template-columns: var(--section-label-width) 1fr;
-  gap: var(--section-gap);
-}
-
-.section-labels {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.section-num {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.05em;
-}
-
-.section-name {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.15em;
-}
+@import './shared/styles/variables.css';
 
 * {
   margin: 0;

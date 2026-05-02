@@ -11,12 +11,6 @@
   transform: translateY(0);
 }
 
-.about__layout {
-  display: grid;
-  grid-template-columns: var(--section-label-width) 1fr;
-  gap: var(--section-gap);
-}
-
 .about__content {
   display: grid;
   grid-template-columns: 200px 1fr 200px;
@@ -84,11 +78,6 @@
 }
 
 @media (max-width: 1024px) {
-  .about__layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
   .about__content {
     grid-template-columns: 150px 1fr 180px;
   }

@@ -7,10 +7,10 @@ export function useTypewriter(text: string, speed: number = 50, delay: number = 
   useEffect(() => {
     setDisplayText('');
     setIsComplete(false);
-    
+
     const timeout = setTimeout(() => {
       let currentIndex = 0;
-      
+
       const interval = setInterval(() => {
         if (currentIndex <= text.length) {
           setDisplayText(text.slice(0, currentIndex));

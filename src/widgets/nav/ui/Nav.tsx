@@ -9,10 +9,9 @@ export function Nav() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
 
-      // Update active section
       const sections = ['about', 'stack', 'projects', 'contact'];
       let current = '';
-      
+
       for (const id of sections) {
         const element = document.getElementById(id);
         if (element) {

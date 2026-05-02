@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { SectionLayout } from '../../../shared/ui';
 import './Stack.css';
 
 export function Stack() {
@@ -35,40 +36,47 @@ export function Stack() {
   const secondaryStack = ['SASS', 'TAILWIND CSS', 'VITE', 'PINIA', 'GSAP', 'FIGMA', 'GIT'];
 
   return (
-    <section 
-      id="stack" 
+    <section
+      id="stack"
       ref={sectionRef}
       className={`stack ${isVisible ? 'stack--visible' : ''}`}
     >
-      <div className="stack__layout">
-        <div className="section-labels">
-          <span className="section-num">/03</span>
-          <span className="section-name">ТЕХНОЛОГИИ</span>
-        </div>
+      <SectionLayout num="/03" label="ТЕХНОЛОГИИ">
         <div className="stack__content">
-          <div className="stack__main">
+          <div className="stack__row stack__row--main" role="list">
             {mainStack.map((tech, index) => (
-              <div key={tech.name} className="stack__item-wrapper">
-                <span 
-                  className="stack__item" 
+              <Fragment key={tech.name}>
+                <span
+                  className="stack__item"
                   style={{ color: tech.accent ? 'var(--color-accent)' : 'var(--color-text)' }}
+                  role="listitem"
                 >
                   {tech.name}
                 </span>
-                {index < mainStack.length - 1 && <span className="stack__divider">/</span>}
-              </div>
+                {index < mainStack.length - 1 && (
+                  <span className="stack__divider" aria-hidden>
+                    /
+                  </span>
+                )}
+              </Fragment>
             ))}
           </div>
-          <div className="stack__secondary">
+          <div className="stack__row stack__row--secondary" role="list">
             {secondaryStack.map((tech, index) => (
-              <div key={tech} className="stack__secondary-item">
-                <span className="stack__secondary-name">{tech}</span>
-                {index < secondaryStack.length - 1 && <span className="stack__secondary-divider">/</span>}
-              </div>
+              <Fragment key={tech}>
+                <span className="stack__secondary-name" role="listitem">
+                  {tech}
+                </span>
+                {index < secondaryStack.length - 1 && (
+                  <span className="stack__secondary-divider" aria-hidden>
+                    /
+                  </span>
+                )}
+              </Fragment>
             ))}
           </div>
         </div>
-      </div>
+      </SectionLayout>
     </section>
   );
 }

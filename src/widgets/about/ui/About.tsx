@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { SectionLayout } from '../../../shared/ui';
 import './About.css';
 
 export function About() {
@@ -24,16 +25,12 @@ export function About() {
   }, []);
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={sectionRef}
       className={`about ${isVisible ? 'about--visible' : ''}`}
     >
-      <div className="about__layout">
-        <div className="section-labels">
-          <span className="section-num">/02</span>
-          <span className="section-name">ОБО МНЕ</span>
-        </div>
+      <SectionLayout num="/02" label="ОБО МНЕ">
         <div className="about__content">
           <div className="about__left">
             <h2 className="about__title">
@@ -43,8 +40,8 @@ export function About() {
           </div>
           <div className="about__center">
             <p className="about__text">
-              Я — фронтенд-разработчик, который создаёт функциональные, быстрые 
-              и эстетичные интерфейсы. Люблю сложные задачи, внимание 
+              Я — фронтенд-разработчик, который создаёт функциональные, быстрые
+              и эстетичные интерфейсы. Люблю сложные задачи, внимание
               к деталям и чистый код.
             </p>
             <p className="about__text">
@@ -66,7 +63,7 @@ export function About() {
             </div>
           </div>
         </div>
-      </div>
+      </SectionLayout>
     </section>
   );
 }
