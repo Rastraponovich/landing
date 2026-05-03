@@ -1,31 +1,45 @@
 import { useState, useEffect } from 'react';
 
-export function useTypewriter(text: string, speed: number = 50, delay: number = 0) {
+export function useTypewriter(
+  text: string,
+  speed: number = 50,
+  delay: number = 0
+) {
   const [displayText, setDisplayText] = useState('');
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    setDisplayText('');
-    setIsComplete(false);
+    let intervalId: ReturnType<typeof setInterval> | undefined;
 
-    const timeout = setTimeout(() => {
+    const resetId = window.setTimeout(() => {
+      setDisplayText('');
+      setIsComplete(false);
+    }, 0);
+
+    const startId = window.setTimeout(() => {
       let currentIndex = 0;
 
-      const interval = setInterval(() => {
+      intervalId = window.setInterval(() => {
         if (currentIndex <= text.length) {
           setDisplayText(text.slice(0, currentIndex));
           currentIndex++;
         } else {
           setIsComplete(true);
-          clearInterval(interval);
+          if (intervalId !== undefined) {
+            window.clearInterval(intervalId);
+            intervalId = undefined;
+          }
         }
       }, speed);
-
-      return () => clearInterval(interval);
     }, delay);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      window.clearTimeout(resetId);
+      window.clearTimeout(startId);
+      if (intervalId !== undefined) {
+        window.clearInterval(intervalId);
+      }
+    };
   }, [text, speed, delay]);
-
   return { displayText, isComplete };
 }

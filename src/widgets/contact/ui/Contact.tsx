@@ -24,12 +24,6 @@ export function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const links = [
-    { label: 'EMAIL', value: 'hello@aleksey.dev', href: 'mailto:hello@aleksey.dev' },
-    { label: 'TELEGRAM', value: '@aleksey_dev', href: 'https://t.me/aleksey_dev' },
-    { label: 'GITHUB', value: 'github.com/aleksey-dev', href: 'https://github.com/aleksey-dev' },
-  ];
-
   return (
     <section
       id="contact"
@@ -40,16 +34,22 @@ export function Contact() {
       )}
     >
       <SectionLayout num="/05" label="КОНТАКТЫ">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-8 items-start">
           <div className="relative">
-            <h2 className="font-display text-[clamp(32px,4vw,56px)] font-bold not-italic leading-[1.1] tracking-[0.02em]">
-              <span className="block">ДАВАЙТЕ СОЗДАВАТЬ</span>
-              <span className="block text-accent">КРУТОЕ</span>
+            <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold not-italic leading-none tracking-[0.02em]">
+              <span className="block">ДАВАЙТЕ </span>
+              <span className="block space-x-[1ch]">
+                <span>СОЗДАВАТЬ</span>
+                <span className="text-accent">КРУТОЕ</span>
+              </span>
             </h2>
-            <div className="hidden lg:flex items-center gap-0 mt-3 w-[80%]" aria-hidden>
-              <span className="flex-1 min-w-0 h-1 bg-accent" />
+            <div
+              className="hidden lg:flex items-center gap-0 mt-1 w-full"
+              aria-hidden
+            >
+              <span className="flex-1 min-w-0 h-0.5 bg-accent" />
               <svg
-                className="shrink-0 text-accent block -ml-[1px]"
+                className="shrink-0 text-accent block -ml-px"
                 width="28"
                 height="12"
                 viewBox="0 0 28 12"
@@ -66,39 +66,70 @@ export function Contact() {
               </svg>
             </div>
           </div>
-          <div className="flex flex-col justify-start pt-2">
-            <p className="text-sm text-text-secondary mb-6">
-              Открыт к интересным проектам и сотрудничеству
-            </p>
-            <a
-              href="mailto:hello@aleksey.dev"
-              className="inline-flex items-center justify-center md:justify-start gap-3 bg-accent text-text px-7 py-3.5 text-xs font-semibold tracking-[0.05em] mb-8 transition-all duration-300 w-full md:w-fit hover:bg-accent-hover hover:gap-4"
-            >
-              <span>НАПИСАТЬ МНЕ</span>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" strokeWidth="2" />
-              </svg>
-            </a>
-            <div className="flex flex-col gap-3">
-              {links.map((link) => (
-                <div className="flex flex-col gap-[2px]" key={link.label}>
-                  <span className="text-[10px] font-medium tracking-[0.1em] text-text-secondary">
-                    {link.label}
-                  </span>
-                  <a
-                    href={link.href}
-                    className="text-sm text-text transition-colors duration-300 hover:text-accent"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.value}
-                  </a>
-                </div>
-              ))}
+
+          <div className="flex flex-col  justify-start">
+            <div>
+              <p className="text-pretty  text-white/70 mb-3">
+                Открыт к интересным проектам и сотрудничеству
+              </p>
+              <a
+                href="mailto:hello@aleksey.dev"
+                className="inline-flex items-center justify-center md:justify-between gap-3 bg-accent text-text p-3 text-xs font-semibold tracking-wider transition-all duration-300 w-full  hover:bg-accent-hover hover:gap-4"
+              >
+                <span>НАПИСАТЬ МНЕ</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M5 15L15 5M15 5H7M15 5V13"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
+          <ContactLinks />
         </div>
       </SectionLayout>
     </section>
+  );
+}
+
+const links = [
+  {
+    label: 'EMAIL',
+    value: 'hello@aleksey.dev',
+    href: 'mailto:hello@aleksey.dev',
+  },
+  {
+    label: 'TELEGRAM',
+    value: '@aleksey_dev',
+    href: 'https://t.me/aleksey_dev',
+  },
+  {
+    label: 'GITHUB',
+    value: 'github.com/aleksey-dev',
+    href: 'https://github.com/aleksey-dev',
+  },
+];
+function ContactLinks() {
+  return (
+    <div className="flex flex-col gap-3 text-xs">
+      {links.map((link) => (
+        <div className="grid grid-cols-2 gap-px" key={link.label}>
+          <span className=" font-medium tracking-widest text-text-secondary">
+            {link.label}
+          </span>
+
+          <a
+            target="_blank"
+            href={link.href}
+            rel="noopener noreferrer"
+            className="whitespace-nowrap text-text transition-colors duration-300 hover:text-accent"
+          >
+            {link.value}
+          </a>
+        </div>
+      ))}
+    </div>
   );
 }

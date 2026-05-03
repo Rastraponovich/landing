@@ -8,7 +8,12 @@ export interface SectionLayoutProps {
   className?: string;
 }
 
-export function SectionLayout({ num, label, children, className }: SectionLayoutProps) {
+export function SectionLayout({
+  num,
+  label,
+  children,
+  className,
+}: SectionLayoutProps) {
   return (
     <div
       className={cn(
@@ -17,8 +22,12 @@ export function SectionLayout({ num, label, children, className }: SectionLayout
       )}
     >
       <div className="flex flex-col gap-1">
-        <span className="text-[11px] font-medium text-text tracking-[0.05em]">{num}</span>
-        <span className="text-[10px] font-medium text-text-secondary tracking-[0.15em]">{label}</span>
+        <span className="text-[11px] font-medium text-text tracking-wider">
+          {num}
+        </span>
+        <span className="text-[10px] font-medium text-text-secondary tracking-[0.15em]">
+          {label}
+        </span>
       </div>
       {children}
     </div>

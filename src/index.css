@@ -1,95 +1,173 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-bg: #0a0a0a;
+  /* "Deep Slate" (Холодный графит) — Самый универсальный */
+  /* --bg-main: oklch(0.14 0.01 250);
+  --text-primary: oklch(0.98 0.01 250);
+  --text-secondary: oklch(0.75 0.02 250); */
+
+  /* "Midnight Purple" (Глубокий черничный) — Премиальный */
+  /* --bg-main: oklch(0.12 0.02 290);
+  --text-primary: oklch(0.98 0.01 290);
+  --text-secondary: oklch(0.75 0.03 290); */
+
+  /* "Modern Obsidian" (Минимализм) — Почти черный */
+  /* --bg-main: oklch(0.13 0.005 200);
+  --text-primary: oklch(0.99 0.002 200);
+  --text-secondary: oklch(0.75 0.005 200); */
+
+  /* «Deep Emerald» (Глубокий хвойный) — Спокойствие и эко */
+  /* Глубокий лесной фон */
+  /* --bg-main: oklch(0.15 0.015 160); */
+  /* Текст с мягким мятным оттенком */
+  /* --text-primary: oklch(0.98 0.01 160); */
+  /* Secondary: 75% яркости */
+  /* --text-secondary: oklch(0.75 0.02 160); */
+
+  /* «Dark Chocolate» (Тёплый кофейный) — Уют и стиль */
+  /* Фон цвета горького шоколада */
+  /* --bg-main: oklch(0.14 0.01 50); */
+  /* Текст с кремовым отливом */
+  /* --text-primary: oklch(0.98 0.005 50); */
+  /* Secondary: приглушенный бежево-серый */
+  /* --text-secondary: oklch(0.75 0.015 50); */
+
+  /* «Cyberpunk Ink» (Чернильно-синий) — Технологичность */
+  /* Насыщенный темно-синий */
+  --bg-main: oklch(0.16 0.03 260);
+  /* Чистый холодный текст */
+  --text-primary: oklch(0.99 0.01 260);
+  /* Secondary: с выраженным голубым подтоном */
+  --text-secondary: oklch(0.75 0.04 260);
+
+  --color-bg: var(--bg-main);
   --color-bg-secondary: #111111;
-  --color-text: #ffffff;
-  --color-text-secondary: #888888;
+  --color-text: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  /* --color-text-secondary: color-mix(in oklab, var(--color-text), black 25%); */
   --color-accent: #e63946;
   --color-accent-hover: #ff4d5a;
   --color-border: #222222;
 
-  --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: "Bebas Neue", sans-serif;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --font-display: 'Bebas Neue', sans-serif; */
+  --font-display: 'Unbounded', sans-serif;
 
-  /* Кастомные значения для transition и spacing (в Tailwind 4 префиксы важны для генерации утилит) */
-  --default-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Кастомные spacing переменные */
   --spacing-section-label-width: 120px;
   --spacing-section-gap: 32px;
-  --spacing-stack-gap: 16px;
+
+  /* Transitions */
+  --default-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* codeblock */
+  --color-code-const: oklch(0.7 0.2 330);
+  --color-code-number: oklch(0.35 0.01 250);
+  --color-code-comment: oklch(0.45 0.01 250);
+  --color-code-obj-keys: oklch(0.9 0.03 260);
+  --color-code-obj-values: oklch(0.85 0.12 170);
+}
+.code-keyword {
+  text-shadow: 0 0 10px oklch(0.7 0.2 330 / 0.3);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.code-container {
+  /* Очень легкое осветление фона */
+  background: oklch(0.2 0.02 250 / 0.05);
+  /* Тонкая, едва заметная граница */
+  border: 1px solid oklch(1 0 0 / 0.05); /* Едва заметная */
+  border-top: 1px solid oklch(1 0 0 / 0.15); /* Блик сверху */
+  border-left: 1px solid oklch(1 0 0 / 0.1);
+  /* Мягкая тень для объема */
+  box-shadow: 0 20px 40px oklch(0 0 0 / 0.3);
 }
 
-html {
-  scroll-behavior: smooth;
+.header {
+  width: 100%;
+  z-index: 100;
+  background: oklch(0.1 0.01 250 / 0.3);
+  border-bottom: 1px solid oklch(1 0 0 / 0);
+  animation: scroll-header linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0px 100px;
+  background: transparent;
 }
 
-body {
-  font-family: var(--font-main);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* === ANIMATIONS === */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+@keyframes scroll-header {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    border-bottom-color: oklch(1 0 0 / 0.1);
+    background-color: oklch(0.13 0.005 250 / 0.7);
   }
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
   }
-}
 
-.animate-in {
-  animation: fadeInUp 0.6s ease forwards;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-/* Smooth scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
+  /* === ANIMATIONS === */
 
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
-}
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-secondary);
-}
+  .animate-in {
+    animation: fadeInUp 0.6s ease forwards;
+  }
 
-/* Selection */
-::selection {
-  background: var(--color-accent);
-  color: var(--color-text);
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-secondary);
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-text);
+  }
 }

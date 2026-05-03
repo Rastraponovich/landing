@@ -10,7 +10,9 @@ export function Footer() {
         <span>СОЗДАЮ ЦИФРОВЫЕ ВПЕЧАТЛЕНИЯ</span>
       </div>
       <div className="flex-none md:flex-1 flex justify-center md:justify-end items-center gap-2">
-        <span className="text-text-secondary">РАЗРАБОТАНО С ЛЮБОВЬЮ И КОДОМ</span>
+        <span className="text-text-secondary">
+          РАЗРАБОТАНО С ЛЮБОВЬЮ И КОДОМ
+        </span>
         <span className="text-accent">&lt;/&gt;</span>
       </div>
     </footer>

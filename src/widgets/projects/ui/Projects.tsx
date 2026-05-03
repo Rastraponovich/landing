@@ -74,18 +74,18 @@ export function Projects() {
     >
       <SectionLayout num="/04" label="ПРОЕКТЫ">
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-border">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {projects.map((project) => (
               <article
                 className="group flex flex-col bg-bg p-6 min-h-auto md:min-h-[220px] relative overflow-hidden cursor-pointer transition-colors duration-300 hover:bg-bg-secondary"
                 key={project.num}
               >
                 <div className="flex justify-between items-center mb-6">
-                  <span className="text-[10px] font-medium text-text-secondary tracking-[0.05em]">
+                  <span className="text-[10px] font-medium text-text-secondary tracking-wider">
                     {project.num}
                   </span>
                   <svg
-                    className="text-text-secondary transition-all duration-300 group-hover:text-accent group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                    className="text-text-secondary transition-all duration-300 group-hover:text-accent group-hover:translate-x-[2px] group-hover:translate-y-[-2px]"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
@@ -98,13 +98,13 @@ export function Projects() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-display text-[32px] font-normal tracking-[0.02em] leading-[1.1] mb-2 -skew-x-[4deg] origin-left">
+                <h3 className="font-display text-[32px] font-normal tracking-[0.02em] leading-[1.1] mb-2 skew-x-[-4deg] origin-left">
                   {project.title}
                 </h3>
                 <p className="text-[11px] text-text-secondary mb-2 leading-[1.4]">
                   {project.desc}
                 </p>
-                <p className="text-[9px] text-text-secondary tracking-[0.03em] uppercase mb-auto leading-[1.5]">
+                <p className="text-[9px] text-text-secondary tracking-[0.03em] uppercase mb-auto leading-normal">
                   {project.tech}
                 </p>
                 <a

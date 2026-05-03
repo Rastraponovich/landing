@@ -66,11 +66,11 @@ git push -u origin main
 ```ts
 export default defineConfig({
   plugins: [react()],
-  base: '/webpage/',  // ← тут имя репозитория
+  base: '/webpage/', // ← тут имя репозитория
   build: {
     outDir: 'dist',
   },
-})
+});
 ```
 
 ### 3. Собери и задеплой
@@ -165,12 +165,13 @@ npm run deploy
 
 ```css
 :root {
-  --color-accent: #e63946;      /* Красный */
+  --color-accent: #e63946; /* Красный */
   --color-accent-hover: #ff4d5a;
 }
 ```
 
 Варианты:
+
 - `#00d9ff` — голубой
 - `#50fa7b` — зелёный
 - `#bd93f9` — фиолетовый

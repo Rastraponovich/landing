@@ -2,13 +2,10 @@ import { useEffect, useState } from 'react';
 import { cn } from '~/shared/lib/utils';
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-
       const sections = ['about', 'stack', 'projects', 'contact'];
       let current = '';
 
@@ -38,17 +35,13 @@ export function Nav() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 flex justify-between items-center px-6 md:px-12 py-4 md:py-5 z-[100] transition-all duration-300 ease-out',
-        scrolled ? 'bg-bg/98' : 'bg-bg'
+        'fixed group top-0 left-0 right-0 flex justify-between items-center px-6 md:px-12 py-4 md:py-5 z-100 transition-all duration-300 ease-out',
+        'header lg:py-6  backdrop-blur-md'
       )}
     >
-      <div className="flex items-center gap-4">
-        <span className="text-[11px] font-medium text-text tracking-[0.05em]">/01</span>
-        <span className="text-[10px] font-medium text-text-secondary tracking-[0.15em]">
-          ФРОНТЕНД-РАЗРАБОТЧИК
-        </span>
-      </div>
-      <div className="hidden md:flex gap-10">
+      <DecorationTitle />
+
+      <div className="hidden md:flex gap-12">
         {navLinks.map((link) => {
           const isActive = activeSection === link.href.slice(1);
 
@@ -57,10 +50,13 @@ export function Nav() {
               key={link.href}
               href={link.href}
               className={cn(
-                'relative text-[11px] font-medium tracking-[0.08em] transition-colors duration-300',
-                isActive ? 'text-text' : 'text-text-secondary hover:text-text',
-                'after:content-[""] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300',
-                isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full'
+                'relative text-xs font-medium tracking-[0.2em] transition-colors duration-300',
+                isActive
+                  ? 'text-text'
+                  : 'text-text-secondary hover:text-accent',
+                'after:content-[""] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300',
+                isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full',
+                'focus:outline-none focus-visible:text-accent'
               )}
             >
               {link.label}
@@ -69,5 +65,28 @@ export function Nav() {
         })}
       </div>
     </nav>
+  );
+}
+
+function DecorationTitle() {
+  return (
+    <div className=" flex flex-col h-4 overflow-hidden leading-4">
+      <div className="flex flex-col transition-transform duration-500 ease-in-out group-hover:-translate-y-1/2">
+        {/* <!-- Состояние 1: Стандартное --> */}
+        <div className="flex items-baseline gap-4 opacity-40 font-medium">
+          <span className="text-[11px] text-text tracking-wider">/01</span>
+          <span className="text-[10px] text-text-secondary tracking-[0.3em]">
+            ФРОНТЕНД-РАЗРАБОТЧИК
+          </span>
+        </div>
+
+        <div className="flex items-baseline gap-4 text-accent font-medium">
+          <span className="text-[11px] tracking-wider">/AVAILABLE</span>
+          <span className="text-[10px] font-medium tracking-[0.3em]">
+            FOR WORK
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
