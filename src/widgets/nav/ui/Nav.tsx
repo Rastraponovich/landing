@@ -41,7 +41,7 @@ export function Nav() {
     >
       <DecorationTitle />
 
-      <div className="hidden md:flex gap-12">
+      <div className="hidden md:flex gap-8 lg:gap-12">
         {navLinks.map((link) => {
           const isActive = activeSection === link.href.slice(1);
 
