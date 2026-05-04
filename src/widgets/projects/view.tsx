@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '~/shared/ui';
+import { SectionLayout, SectionScrollWrapper } from '~/shared/ui';
 import { cn } from '~/shared/lib/utils';
 
 interface Project {
@@ -10,68 +9,40 @@ interface Project {
   link: string;
 }
 
+const projects: Project[] = [
+  {
+    num: '01',
+    title: 'MOTION',
+    desc: 'Лендинговая страница',
+    tech: 'GSAP / SCROLL TRIGGER / RESPONSIVE',
+    link: '#',
+  },
+  {
+    num: '02',
+    title: 'MARQUEE',
+    desc: 'Интерактивное веб-приложение',
+    tech: 'NEXT.JS / STRAPI / ANIMATIONS',
+    link: '#',
+  },
+  {
+    num: '03',
+    title: 'DASHBOARD',
+    desc: 'Админ-панель',
+    tech: 'REACT / CHARTS / API',
+    link: '#',
+  },
+  {
+    num: '04',
+    title: 'E-COMMERCE',
+    desc: 'Интернет-магазин',
+    tech: 'NEXT.JS / TAILWIND / STRIPE',
+    link: '#',
+  },
+];
+
 export function Projects() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const projects: Project[] = [
-    {
-      num: '01',
-      title: 'MOTION',
-      desc: 'Лендинговая страница',
-      tech: 'GSAP / SCROLL TRIGGER / RESPONSIVE',
-      link: '#',
-    },
-    {
-      num: '02',
-      title: 'MARQUEE',
-      desc: 'Интерактивное веб-приложение',
-      tech: 'NEXT.JS / STRAPI / ANIMATIONS',
-      link: '#',
-    },
-    {
-      num: '03',
-      title: 'DASHBOARD',
-      desc: 'Админ-панель',
-      tech: 'REACT / CHARTS / API',
-      link: '#',
-    },
-    {
-      num: '04',
-      title: 'E-COMMERCE',
-      desc: 'Интернет-магазин',
-      tech: 'NEXT.JS / TAILWIND / STRIPE',
-      link: '#',
-    },
-  ];
-
   return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className={cn(
-        'px-6 py-8 md:px-12 md:py-26 border-t border-border transition-all duration-600 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
-      )}
-    >
+    <SectionScrollWrapper id="projects">
       <SectionLayout num="/04" label="ПРОЕКТЫ" className="container">
         <div>
           <div className="grid max-md:gap-y-6 md:grid-cols-2 lg:grid-cols-4">
@@ -128,6 +99,6 @@ export function Projects() {
           </div>
         </div>
       </SectionLayout>
-    </section>
+    </SectionScrollWrapper>
   );
 }

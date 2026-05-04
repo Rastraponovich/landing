@@ -1,51 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '~/shared/ui';
-import { cn } from '~/shared/lib/utils';
+import { SectionLayout, SectionScrollWrapper } from '~/shared/ui';
 
 export function Contact() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className={cn(
-        'px-6 py-8 pb-12 md:px-12 md:py-26 border-y border-border transition-all duration-600 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
-      )}
-    >
+    <SectionScrollWrapper id="contact" className="md:py-16 lg:py-26">
       <SectionLayout num="/05" label="КОНТАКТЫ" className="container">
-        <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-8 items-start">
+        <div className="grid lg:grid-cols-[auto_1fr] gap-8 items-start">
           <div className="relative">
             <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold not-italic leading-none tracking-[0.02em]">
               <span className="block">ДАВАЙТЕ </span>
-              <span className="block space-x-[1ch]">
+              <span className="block">
                 <span>СОЗДАВАТЬ</span>
-                <span className="text-accent">КРУТОЕ</span>
+                <span className="text-accent max-md:block"> КРУТОЕ</span>
               </span>
             </h2>
             <div
-              className="hidden lg:flex items-center gap-0 mt-1 w-full"
               aria-hidden
+              className="hidden lg:flex items-center gap-0 mt-1 w-full"
             >
               <span className="flex-1 min-w-0 h-0.5 bg-accent" />
               <svg
@@ -66,57 +36,62 @@ export function Contact() {
               </svg>
             </div>
           </div>
+          <div className="flex md:max-lg:flex-row flex-col gap-8 md:max-lg:items-baseline">
+            <ContactLinks />
 
-          <div className="flex flex-col  justify-start">
-            <div>
-              <p className="text-pretty  text-white/70 mb-3">
-                Открыт к интересным проектам и сотрудничеству
-              </p>
-              <a
-                href="mailto:hello@aleksey.dev"
-                className="inline-flex items-center justify-center md:justify-between gap-3 bg-accent text-text p-3 text-xs font-semibold tracking-wider transition-all duration-300 w-full  hover:bg-accent-hover hover:gap-4"
-              >
-                <span>НАПИСАТЬ МНЕ</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M5 15L15 5M15 5H7M15 5V13"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </a>
+            <div className="flex flex-col justify-start ">
+              <div>
+                <p className="text-balance text-xl text-white/70 mb-4 md:mb-3">
+                  Открыт к интересным проектам и сотрудничеству
+                </p>
+                <a
+                  href="mailto:hello@vitaliy.dev"
+                  className="inline-flex items-center justify-center md:justify-between gap-3 bg-accent text-text p-3 text-xs font-semibold tracking-wider transition-all duration-300 w-full  hover:bg-accent-hover hover:gap-4"
+                >
+                  <span>НАПИСАТЬ МНЕ</span>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M5 15L15 5M15 5H7M15 5V13"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <ContactLinks />
         </div>
       </SectionLayout>
-    </section>
+    </SectionScrollWrapper>
   );
 }
 
 const links = [
   {
     label: 'EMAIL',
-    value: 'hello@aleksey.dev',
-    href: 'mailto:hello@aleksey.dev',
+    value: 'hello@vitaliy.dev',
+    href: 'mailto:hello@vitaliy.dev',
   },
   {
     label: 'TELEGRAM',
-    value: '@aleksey_dev',
-    href: 'https://t.me/aleksey_dev',
+    value: '@vitaliy_dev',
+    href: 'https://t.me/vitaliy_dev',
   },
   {
     label: 'GITHUB',
-    value: 'github.com/aleksey-dev',
-    href: 'https://github.com/aleksey-dev',
+    value: 'github.com/vitaliy-dev',
+    href: 'https://github.com/vitaliy-dev',
   },
 ];
 function ContactLinks() {
   return (
     <div className="flex flex-col gap-3 text-xs">
       {links.map((link) => (
-        <div className="grid grid-cols-2 gap-px" key={link.label}>
-          <span className=" font-medium tracking-widest text-text-secondary">
+        <div
+          key={link.label}
+          className="grid gap-y-1 md:grid-cols-2 gap-px items-baseline"
+        >
+          <span className=" tracking-[0.2em] text-text-secondary/40 text-[10px] font-display">
             {link.label}
           </span>
 
@@ -124,7 +99,7 @@ function ContactLinks() {
             target="_blank"
             href={link.href}
             rel="noopener noreferrer"
-            className="whitespace-nowrap text-text transition-colors duration-300 hover:text-accent"
+            className="whitespace-nowrap text-text transition-colors duration-300 hover:text-accent font-medium"
           >
             {link.value}
           </a>

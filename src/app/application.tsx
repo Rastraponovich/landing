@@ -1,11 +1,11 @@
 import { Footer } from '~/widgets/footer';
-import { Nav } from '~/widgets/nav';
+import { Header } from '~/widgets/header';
 import { HomePage } from '~/views/home';
 
 function App() {
   return (
     <>
-      <Nav />
+      <Header />
       <HomePage />
       <Footer />
     </>

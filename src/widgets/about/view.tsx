@@ -1,56 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '~/shared/ui';
+import { SectionLayout, SectionScrollWrapper } from '~/shared/ui';
 import { cn } from '~/shared/lib/utils';
-
-function Wrapper({ children }: { children: React.ReactNode }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className={cn(
-        'px-6 py-12 md:px-12 md:py-26 border-t border-border transition-all duration-600 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
-      )}
-    >
-      {children}
-    </section>
-  );
-}
 
 export function About() {
   return (
-    <Wrapper>
+    <SectionScrollWrapper id="about">
       <SectionLayout num="/02" label="ОБО МНЕ" className="container">
-        <div className="grid lg:grid-cols-[150px_1fr_180px] xl:grid-cols-[200px_1fr_200px] gap-8 items-start">
+        {/* lg:grid-cols-[150px_1fr_180px]  */}
+        <div className="grid md:grid-cols-[40%_1fr] xl:grid-cols-[auto_1fr_min-content] gap-8 gap-y-16 items-start">
           <div className="flex flex-col w-fit max-md:pb-4 border-b border-text-secondary/50 md:border-none">
-            <h2 className="font-display text-5xl xl:text-[72px] font-normal leading-[0.9] tracking-[0.02em]">
+            <h2 className="font-display text-5xl md:text-7xl font-normal leading-[0.9] tracking-[0.02em]">
               <span className="block -skew-x-8 origin-left">ОБО</span>
               <span className="block -skew-x-8 origin-left">МНЕ</span>
             </h2>
           </div>
 
-          <div className="flex flex-col md:text-lg text-[15px] gap-4 pt-4 md:pt-2 md:border-l border-border md:pl-6 h-full">
+          <div className="flex flex-col md:text-lg text-[15px] gap-4 md:border-l border-border md:pl-6 h-full">
             <p className="leading-relaxed md:leading-normal text-text-secondary max-w-[480px]">
               Я — фронтенд-разработчик, который создаёт функциональные, быстрые
               и эстетичные интерфейсы. Люблю{' '}
@@ -63,10 +27,12 @@ export function About() {
             </p>
           </div>
 
+          <hr className="md:max-xl:block hidden md:max-xl:col-span-full border-border" />
+
           <Statistics />
         </div>
       </SectionLayout>
-    </Wrapper>
+    </SectionScrollWrapper>
   );
 }
 
@@ -78,13 +44,18 @@ const STATISTICS = [
 
 function Statistics() {
   return (
-    <div className="max-md:grid grid-cols-2 md:flex  md:flex-col gap-8">
-      {STATISTICS.map((stat, index) => (
+    <div
+      className={cn(
+        'max-md:grid grid-cols-2 gap-8 max-xl:col-span-full',
+        'md:flex xl:flex-col md:max-xl:justify-between'
+      )}
+    >
+      {STATISTICS.map((stat) => (
         <StatisticsItem
           key={stat.label}
           value={stat.value}
           label={stat.label}
-          className={cn(index === 2 && 'max-md:col-span-full')}
+          className="last:max-md:col-span-full"
         />
       ))}
     </div>

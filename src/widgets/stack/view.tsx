@@ -1,5 +1,5 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { SectionLayout } from '~/shared/ui';
+import { Fragment } from 'react';
+import { SectionLayout, SectionScrollWrapper } from '~/shared/ui';
 import { cn } from '~/shared/lib/utils';
 
 const mainStack = [
@@ -21,45 +21,9 @@ const secondaryStack = [
   'GIT',
 ];
 
-function Wrapper({ children }: { children: React.ReactNode }) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section
-      id="stack"
-      ref={sectionRef}
-      className={cn(
-        'py-26 px-6 md:px-12 border-t border-border transition-all duration-600 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
-      )}
-    >
-      {children}
-    </section>
-  );
-}
-
 export function Stack() {
   return (
-    <Wrapper>
+    <SectionScrollWrapper id="stack">
       <SectionLayout
         num="/03"
         label="ТЕХНОЛОГИИ"
@@ -67,7 +31,7 @@ export function Stack() {
       >
         <Marquee />
       </SectionLayout>
-    </Wrapper>
+    </SectionScrollWrapper>
   );
 }
 

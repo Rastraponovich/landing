@@ -71,64 +71,54 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[calc(100vh-60px)] 2xl:min-h-[60dvh] container mx-auto grid relative overflow-hidden bg-bg items-center pt-20 px-6 lg:pt-0 lg:px-0 pb-8 lg:pb-0 gap-4">
-      <div
-        ref={titleRef}
-        className="z-30 flex flex-col relative gap-8 lg:px-12 lg:py-15 justify-center will-change-transform"
-      >
-        <div className="relative font-display text-4xl md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]">
-          <h1
-            className="invisible"
-            style={{
-              textShadow:
-                '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
-            }}
-          >
-            <span className="block -skew-x-8 origin-left text-shadow-inherit">
-              СОЗДАЮ
-            </span>
+    <section className="min-h-[calc(100vh-60px)] 2xl:min-h-[60dvh] container flex flex-col justify-center relative overflow-hidden bg-bg pt-20 px-12 pb-16 2xl:px-0 gap-4">
+      <div className="relative grid items-center grow">
+        <div
+          ref={titleRef}
+          // lg:px-12
+          className="z-30 flex flex-col relative gap-8 lg:py-15 justify-center will-change-transform"
+        >
+          <div className="relative font-display text-4xl md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]">
+            <h1 className="invisible text-shadow-hero">
+              <span className="block -skew-x-8 origin-left text-shadow-inherit">
+                СОЗДАЮ
+              </span>
 
-            <span className="block -skew-x-8 origin-left text-shadow-inherit">
-              ЦИФРОВЫЕ
-            </span>
+              <span className="block -skew-x-8 origin-left text-shadow-inherit">
+                ЦИФРОВЫЕ
+              </span>
 
-            <span className="block  origin-left text-shadow-inherit -skew-x-8">
-              ВПЕЧАТЛЕНИЯ
-            </span>
+              <span className="block  origin-left text-shadow-inherit -skew-x-8">
+                ВПЕЧАТЛЕНИЯ
+              </span>
 
-            <span className="inline-block  text-accent ml-2">_</span>
-          </h1>
+              <span className="inline-block  text-accent ml-2">_</span>
+            </h1>
 
-          <h1
-            className="absolute inset-0 z-10"
-            style={{
-              textShadow:
-                '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
-            }}
-          >
-            <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
-              {line1}
-            </span>
+            <h1 className="absolute inset-0 z-10 text-shadow-hero">
+              <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
+                {line1}
+              </span>
 
-            <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
-              {line2}
-            </span>
+              <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
+                {line2}
+              </span>
 
-            <span className="block origin-left text-shadow-inherit will-change-transform -skew-x-8">
-              {line3}
-            </span>
+              <span className="block origin-left text-shadow-inherit will-change-transform -skew-x-8">
+                {line3}
+              </span>
 
-            <span className="inline-block text-accent ml-2 animate-pulse">
-              _
-            </span>
-          </h1>
+              <span className="inline-block text-accent ml-2 animate-pulse">
+                _
+              </span>
+            </h1>
+          </div>
         </div>
 
-        <AuthorBlock />
+        <RedLine ref={lineRef} showLine={showLine} />
+        <CodeBlock ref={codeRef} showCode={showCode} />
       </div>
-
-      <DecorationLine ref={lineRef} showLine={showLine} />
-      <CodeBlock ref={codeRef} showCode={showCode} />
+      <AuthorBlock />
     </section>
   );
 }
@@ -205,7 +195,7 @@ function AuthorBlock() {
   );
 }
 
-const DecorationLine = forwardRef<
+const RedLine = forwardRef<
   SVGSVGElement,
   { showLine: boolean; className?: string }
 >(({ showLine, className }, ref) => {
@@ -215,7 +205,8 @@ const DecorationLine = forwardRef<
       viewBox="0 0 1200 16"
       preserveAspectRatio="none"
       className={cn(
-        'z-10 absolute top-1/4 lg:top-1/2 -left-12 w-full lg:w-3/5 lg:h-4 h-2 -rotate-2 origin-left pointer-events-none opacity-95 transition-all duration-600 ease-out',
+        // -left-12
+        'z-10 absolute top-1/4 -left-12 lg:top-1/2 w-full md:w-4/5 lg:w-3/5 lg:h-4 h-2 -rotate-2 origin-left pointer-events-none opacity-95 transition-all duration-600 ease-out',
         showLine
           ? '[clip-path:inset(0_0_0_0)]' // Полностью открыта
           : '[clip-path:inset(0_100%_0_0)]', // Полностью скрыта справа

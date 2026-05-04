@@ -41,20 +41,14 @@
   --text-secondary: oklch(0.75 0.04 260);
 
   --color-bg: var(--bg-main);
-  --color-bg-secondary: #111111;
   --color-text: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-  /* --color-text-secondary: color-mix(in oklab, var(--color-text), black 25%); */
   --color-accent: #e63946;
   --color-accent-hover: #ff4d5a;
   --color-border: #222222;
 
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  /* --font-display: 'Bebas Neue', sans-serif; */
   --font-display: 'Unbounded', sans-serif;
-
-  /* Transitions */
-  --default-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* codeblock */
   --color-code-const: oklch(0.7 0.2 330);
@@ -117,6 +111,9 @@
 }
 
 @layer components {
+  .text-shadow-hero {
+    text-shadow: '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)';
+  }
   .code-keyword {
     text-shadow: 0 0 10px oklch(0.7 0.2 330 / 0.3);
   }
