@@ -76,9 +76,9 @@ export function Hero() {
         ref={titleRef}
         className="z-30 flex flex-col relative gap-8 lg:px-12 lg:py-15 justify-center will-change-transform"
       >
-        <div className="relative">
+        <div className="relative font-display text-4xl md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]">
           <h1
-            className="invisible font-display text-[40px] md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em] z-10"
+            className="invisible"
             style={{
               textShadow:
                 '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
@@ -96,19 +96,17 @@ export function Hero() {
               ВПЕЧАТЛЕНИЯ
             </span>
 
-            <span className="inline-block font-display text-[40px] md:text-[clamp(48px,8vw,120px)] text-accent ml-2">
-              _
-            </span>
+            <span className="inline-block  text-accent ml-2">_</span>
           </h1>
 
           <h1
-            className="absolute inset-0 font-display text-[40px] md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]  z-10"
+            className="absolute inset-0 z-10"
             style={{
               textShadow:
                 '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
             }}
           >
-            <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform ">
+            <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
               {line1}
             </span>
 
@@ -116,11 +114,11 @@ export function Hero() {
               {line2}
             </span>
 
-            <span className="block  origin-left text-shadow-inherit will-change-transform -skew-x-8">
+            <span className="block origin-left text-shadow-inherit will-change-transform -skew-x-8">
               {line3}
             </span>
 
-            <span className="inline-block font-display text-[40px] md:text-[clamp(48px,8vw,120px)] text-accent ml-2 animate-pulse">
+            <span className="inline-block text-accent ml-2 animate-pulse">
               _
             </span>
           </h1>
@@ -217,7 +215,7 @@ const DecorationLine = forwardRef<
       viewBox="0 0 1200 16"
       preserveAspectRatio="none"
       className={cn(
-        'z-10 absolute top-40 lg:top-4/9 -left-12 w-full lg:w-3/5 lg:h-4 h-1 -rotate-2 origin-left pointer-events-none opacity-95 transition-all duration-600 ease-out',
+        'z-10 absolute top-1/4 lg:top-1/2 -left-12 w-full lg:w-3/5 lg:h-4 h-2 -rotate-2 origin-left pointer-events-none opacity-95 transition-all duration-600 ease-out',
         showLine
           ? '[clip-path:inset(0_0_0_0)]' // Полностью открыта
           : '[clip-path:inset(0_100%_0_0)]', // Полностью скрыта справа
