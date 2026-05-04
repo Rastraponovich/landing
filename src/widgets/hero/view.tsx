@@ -71,37 +71,65 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[calc(100vh-60px)] grid relative overflow-hidden bg-bg items-center pt-20 px-6 lg:pt-0 lg:px-0 pb-8 lg:pb-0 gap-4">
+    <section className="min-h-[calc(100vh-60px)] 2xl:min-h-[60dvh] container mx-auto grid relative overflow-hidden bg-bg items-center pt-20 px-6 lg:pt-0 lg:px-0 pb-8 lg:pb-0 gap-4">
       <div
         ref={titleRef}
-        className="z-30 flex flex-col relative gap-8 lg:px-12 lg:py-15 justify-center will-change-transform "
+        className="z-30 flex flex-col relative gap-8 lg:px-12 lg:py-15 justify-center will-change-transform"
       >
-        <h1
-          className="font-display text-[40px] md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em] relative z-10"
-          style={{
-            textShadow: '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
-          }}
-        >
-          <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform ">
-            {line1}
-          </span>
+        <div className="relative">
+          <h1
+            className="invisible font-display text-[40px] md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em] z-10"
+            style={{
+              textShadow:
+                '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
+            }}
+          >
+            <span className="block -skew-x-8 origin-left text-shadow-inherit">
+              СОЗДАЮ
+            </span>
 
-          <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
-            {line2}
-          </span>
+            <span className="block -skew-x-8 origin-left text-shadow-inherit">
+              ЦИФРОВЫЕ
+            </span>
 
-          <span className="block  origin-left text-shadow-inherit will-change-transform -skew-x-8">
-            {line3}
-          </span>
+            <span className="block  origin-left text-shadow-inherit -skew-x-8">
+              ВПЕЧАТЛЕНИЯ
+            </span>
 
-          <span className="inline-block font-display text-[40px] md:text-[clamp(48px,8vw,120px)] text-accent ml-2 animate-pulse">
-            _
-          </span>
-        </h1>
+            <span className="inline-block font-display text-[40px] md:text-[clamp(48px,8vw,120px)] text-accent ml-2">
+              _
+            </span>
+          </h1>
+
+          <h1
+            className="absolute inset-0 font-display text-[40px] md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]  z-10"
+            style={{
+              textShadow:
+                '2px 2px 0 var(--color-bg), 4px 4px 0 rgba(0,0,0,0.5)',
+            }}
+          >
+            <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform ">
+              {line1}
+            </span>
+
+            <span className="block -skew-x-8 origin-left text-shadow-inherit will-change-transform">
+              {line2}
+            </span>
+
+            <span className="block  origin-left text-shadow-inherit will-change-transform -skew-x-8">
+              {line3}
+            </span>
+
+            <span className="inline-block font-display text-[40px] md:text-[clamp(48px,8vw,120px)] text-accent ml-2 animate-pulse">
+              _
+            </span>
+          </h1>
+        </div>
+
         <AuthorBlock />
       </div>
 
-      <DecorationLine showLine={showLine} ref={lineRef} />
+      <DecorationLine ref={lineRef} showLine={showLine} />
       <CodeBlock ref={codeRef} showCode={showCode} />
     </section>
   );
@@ -163,7 +191,6 @@ function AuthorBlock() {
 
       <a
         href="#about"
-        // style={{ animationDuration: '2s' }}
         className="flex items-center gap-2 text-[10px] tracking-[0.15em] text-text-secondary transition-colors duration-300 hover:text-accent w-fit"
       >
         <span>SCROLL</span>
@@ -191,7 +218,9 @@ const DecorationLine = forwardRef<
       preserveAspectRatio="none"
       className={cn(
         'z-10 absolute top-40 lg:top-4/9 -left-12 w-full lg:w-3/5 lg:h-4 h-1 -rotate-2 origin-left pointer-events-none opacity-95 transition-all duration-600 ease-out',
-        showLine ? 'clip-path-none' : '[clip-path:inset(0_100%_0_0)]',
+        showLine
+          ? '[clip-path:inset(0_0_0_0)]' // Полностью открыта
+          : '[clip-path:inset(0_100%_0_0)]', // Полностью скрыта справа
         className
       )}
     >

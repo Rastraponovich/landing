@@ -68,11 +68,11 @@ export function Projects() {
       id="projects"
       ref={sectionRef}
       className={cn(
-        'px-6 py-8 md:px-12 md:py-12 md:pb-16 border-t border-border transition-all duration-600 ease-out',
+        'px-6 py-8 md:px-12 md:py-26 border-t border-border transition-all duration-600 ease-out',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
       )}
     >
-      <SectionLayout num="/04" label="ПРОЕКТЫ">
+      <SectionLayout num="/04" label="ПРОЕКТЫ" className="container">
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {projects.map((project) => (

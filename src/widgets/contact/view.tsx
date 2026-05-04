@@ -29,11 +29,11 @@ export function Contact() {
       id="contact"
       ref={sectionRef}
       className={cn(
-        'px-6 py-8 pb-12 md:px-12 md:py-12 md:pb-16 border-y border-border transition-all duration-600 ease-out',
+        'px-6 py-8 pb-12 md:px-12 md:py-26 border-y border-border transition-all duration-600 ease-out',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
       )}
     >
-      <SectionLayout num="/05" label="КОНТАКТЫ">
+      <SectionLayout num="/05" label="КОНТАКТЫ" className="container">
         <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-8 items-start">
           <div className="relative">
             <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold not-italic leading-none tracking-[0.02em]">

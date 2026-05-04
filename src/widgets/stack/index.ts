@@ -1,1 +1,1 @@
-export { Stack } from './ui/Stack';
+export { Stack } from './view';

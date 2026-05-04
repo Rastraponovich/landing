@@ -41,7 +41,7 @@ function Wrapper({ children }: { children: React.ReactNode }) {
 export function About() {
   return (
     <Wrapper>
-      <SectionLayout num="/02" label="ОБО МНЕ">
+      <SectionLayout num="/02" label="ОБО МНЕ" className="container">
         <div className="grid lg:grid-cols-[150px_1fr_180px] xl:grid-cols-[200px_1fr_200px] gap-8 items-start">
           <div className="flex flex-col w-fit max-md:pb-4 border-b border-text-secondary/50 md:border-none">
             <h2 className="font-display text-5xl xl:text-[72px] font-normal leading-[0.9] tracking-[0.02em]">

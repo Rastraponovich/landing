@@ -1,1 +1,1 @@
-export { SectionLayout, type SectionLayoutProps } from './SectionLayout';
+export { SectionLayout, type SectionLayoutProps } from './section-layout';
