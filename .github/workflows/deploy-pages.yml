@@ -24,10 +24,25 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve release tag from workflow run SHA
+        id: resolve_tag
+        run: |
+          TAG=$(git tag --points-at "${{ github.event.workflow_run.head_sha }}" | head -n 1)
+          if [ -z "$TAG" ]; then
+            echo "No tag found for commit ${{ github.event.workflow_run.head_sha }}"
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
       - name: Download release asset
         uses: robinraju/release-downloader@v1.11
         with:
-          latest: true
+          tag: ${{ steps.resolve_tag.outputs.tag }}
           fileName: site-dist.zip
           out-file-path: .
 
