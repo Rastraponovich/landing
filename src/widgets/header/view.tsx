@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { cn } from '~/shared/lib/utils';
+import { BurgerButton, Drawer, DrawerRoot } from '~/shared/ui/burger/view';
 
 const LINKS = [
   { href: '#about', label: 'ОБО МНЕ' },
@@ -9,6 +10,27 @@ const LINKS = [
 ];
 
 export function Header() {
+  return (
+    <DrawerRoot>
+      <header
+        className={cn(
+          'fixed  group top-0 left-0 right-0 py-4 px-6 z-100 transition-all duration-300 ease-out',
+          'header backdrop-blur-md outline-none lg:py-6 md:px-12 md:py-5'
+        )}
+      >
+        <div className="flex justify-between items-center container">
+          <DecorationTitle />
+
+          <NavLinks />
+          <BurgerButton />
+        </div>
+      </header>
+      <Drawer />
+    </DrawerRoot>
+  );
+}
+
+function NavLinks() {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
@@ -31,42 +53,28 @@ export function Header() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   return (
-    <header
-      className={cn(
-        'fixed  group top-0 left-0 right-0 py-4 px-6 z-100 transition-all duration-300 ease-out',
-        'header backdrop-blur-md outline-none lg:py-6 md:px-12 md:py-5'
-      )}
-    >
-      <div className="flex justify-between items-center container">
-        <DecorationTitle />
+    <nav className="hidden md:flex gap-6 lg:gap-12">
+      {LINKS.map((link) => {
+        const isActive = activeSection === link.href.slice(1);
 
-        <nav className="hidden md:flex gap-6 lg:gap-12">
-          {LINKS.map((link) => {
-            const isActive = activeSection === link.href.slice(1);
-
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative text-xs font-medium lg:tracking-[0.2em] transition-colors duration-300',
-                  isActive
-                    ? 'text-text'
-                    : 'text-text-secondary hover:text-accent',
-                  'after:content-[""] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300',
-                  isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full',
-                  'focus:outline-none focus-visible:text-accent'
-                )}
-              >
-                {link.label}
-              </a>
-            );
-          })}
-        </nav>
-      </div>
-    </header>
+        return (
+          <a
+            key={link.href}
+            href={link.href}
+            className={cn(
+              'relative text-xs font-medium lg:tracking-[0.2em] transition-colors duration-300',
+              isActive ? 'text-text' : 'text-text-secondary hover:text-accent',
+              'after:content-[""] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300',
+              isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full',
+              'focus:outline-none focus-visible:text-accent'
+            )}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
   );
 }
 
