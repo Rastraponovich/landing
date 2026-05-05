@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/webpage/', // Измени на имя твоего репозитория на GitHub
+  base: '/landing/',
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src'),
