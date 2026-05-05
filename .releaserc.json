@@ -1,0 +1,31 @@
+{
+  "branches": ["master"],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "parserOpts": {
+          "headerPattern": "^(\\w*)(?:\\((.*)\\))?!?:\\s*(.*)$",
+          "headerCorrespondence": ["type", "scope", "subject"]
+        }
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "parserOpts": {
+          "headerPattern": "^(\\w*)(?:\\((.*)\\))?!?:\\s*(.*)$",
+          "headerCorrespondence": ["type", "scope", "subject"]
+        }
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": ["site-dist.zip"]
+      }
+    ]
+  ]
+}
