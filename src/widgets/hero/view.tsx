@@ -73,7 +73,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="min-h-[calc(100vh-60px)] 2xl:min-h-[60dvh] container flex flex-col justify-center relative overflow-hidden bg-bg pt-20 px-12 pb-16 2xl:px-0 gap-4">
+    <section className="min-h-[calc(100vh-60px)] 2xl:min-h-[60dvh] container flex flex-col justify-center relative overflow-hidden bg-bg pt-20 px-6 md:px-12 pb-16 2xl:px-0 gap-4">
       <div className="relative grid items-center grow">
         <div
           ref={titleRef}
