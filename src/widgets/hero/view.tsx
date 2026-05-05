@@ -75,11 +75,10 @@ export function Hero() {
       <div className="relative grid items-center grow">
         <div
           ref={titleRef}
-          // lg:px-12
           className="z-30 flex flex-col relative gap-8 lg:py-15 justify-center will-change-transform"
         >
           <div className="relative font-display text-4xl md:text-[clamp(48px,8vw,120px)] font-bold leading-[1.2] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]">
-            <h1 className="invisible text-shadow-hero">
+            <h1 aria-hidden className="invisible text-shadow-hero">
               <span className="block -skew-x-8 origin-left text-shadow-inherit">
                 СОЗДАЮ
               </span>
@@ -152,7 +151,6 @@ function formatCode(code: string): string {
       const formatted = line
         .replace(
           /const|function|return/g,
-          // text-[#ff79c6]
           '<span class="text-code-const">$&</span>'
         )
         .replace(
@@ -160,7 +158,6 @@ function formatCode(code: string): string {
           '<span class="text-[#bd93f9]">$&</span>'
         )
         .replace(/'[^']*'/g, '<span class="text-code-obj-values">$&</span>')
-        // text-accent
         .replace(/\/\/ .*/, '<span class="text-code-comment">$&</span>');
       return `<span class="mr-3 select-none text-code-number">${num}</span> ${formatted}`;
     })
@@ -205,7 +202,6 @@ const RedLine = forwardRef<
       viewBox="0 0 1200 16"
       preserveAspectRatio="none"
       className={cn(
-        // -left-12
         'z-10 absolute top-1/4 -left-12 lg:top-1/2 w-full md:w-4/5 lg:w-3/5 lg:h-4 h-2 -rotate-2 origin-left pointer-events-none opacity-95 transition-all duration-600 ease-out',
         showLine
           ? '[clip-path:inset(0_0_0_0)]' // Полностью открыта

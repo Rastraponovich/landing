@@ -13,6 +13,7 @@ export function Contact() {
                 <span className="text-accent max-md:block"> КРУТОЕ</span>
               </span>
             </h2>
+
             <div
               aria-hidden
               className="hidden lg:flex items-center gap-0 mt-1 w-full"
@@ -36,6 +37,7 @@ export function Contact() {
               </svg>
             </div>
           </div>
+
           <div className="flex md:max-lg:flex-row flex-col gap-8 md:max-lg:items-baseline">
             <ContactLinks />
 
@@ -45,7 +47,8 @@ export function Contact() {
                   Открыт к интересным проектам и сотрудничеству
                 </p>
                 <a
-                  href="mailto:hello@vitaliy.dev"
+                  // href="mailto:hello@vitaliy.dev"
+                  href="#contact"
                   className="inline-flex items-center justify-center md:justify-between gap-3 bg-accent text-text p-3 text-xs font-semibold tracking-wider transition-all duration-300 w-full  hover:bg-accent-hover hover:gap-4"
                 >
                   <span>НАПИСАТЬ МНЕ</span>
@@ -70,17 +73,20 @@ const links = [
   {
     label: 'EMAIL',
     value: 'hello@vitaliy.dev',
-    href: 'mailto:hello@vitaliy.dev',
+    // href: 'mailto:hello@vitaliy.dev',
+    href: '#',
   },
   {
     label: 'TELEGRAM',
     value: '@vitaliy_dev',
-    href: 'https://t.me/vitaliy_dev',
+    // href: 'https://t.me/vitaliy_dev',
+    href: '#',
   },
   {
     label: 'GITHUB',
     value: 'github.com/vitaliy-dev',
-    href: 'https://github.com/vitaliy-dev',
+    // href: 'https://github.com/vitaliy-dev',
+    href: '#',
   },
 ];
 function ContactLinks() {
