@@ -58,7 +58,9 @@ export function Hero() {
 
       if (titleRef.current && scrolled < window.innerHeight) {
         titleRef.current.style.transform = `translateY(${scrolled * 0.3}px)`;
-        lineRef.current.style.transform = `translateY(${scrolled * 0.3}px)`;
+        if (lineRef.current) {
+          lineRef.current.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
       }
 
       if (codeRef.current && scrolled < window.innerHeight) {
